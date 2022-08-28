@@ -14,4 +14,4 @@ node_modules
 .sass-cache
 
 # Ignore CSV files
-.csv
+*.csv
