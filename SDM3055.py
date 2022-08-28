@@ -1,8 +1,7 @@
 #!/usr/bin/env python
-#-*- coding:utf-8 –*-
 #-----------------------------------------------------------------------------
-# The short script is a example that open a socket, sends a query,
-# print the return message and closes the socket.
+# https://github.com/marclura/scpi-py-scripts
+# Python scripts for Standard Commands for Programmable Instruments
 #-----------------------------------------------------------------------------
 import socket # for sockets
 import sys # for exit
