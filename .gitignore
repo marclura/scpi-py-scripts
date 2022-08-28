@@ -13,5 +13,5 @@ node_modules
 # Ignore SASS config files
 .sass-cache
 
-# Ignore CSS files
-.css
+# Ignore CSV files
+.csv

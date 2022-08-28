@@ -35,12 +35,13 @@ def SocketConnect():
     except socket.error:
         print ('Failed to create socket.')
         sys.exit();
-        156 / 158
+
     try:
         #Connect to remote server
         s.connect((remote_ip , port))
     except socket.error:
         print ('failed to connect to ip ' + remote_ip)
+
     return s
 
 def SocketQuery(Sock, cmd):
@@ -67,18 +68,23 @@ def cleanqStr(qStr):
 
 def getDeviceIDN(s):
     IDN = SocketQuery(s, b'*IDN?')
-    print('DEVICE:\n' + cleanqStr(IDN))
+    print('\nDEVICE properly connected:\n' + cleanqStr(IDN))
 
  
 def main():
     global remote_ip
     global port
     global count
+
+    print('\n*******************************************************************\nSCPI python: automation measurement for SIGLENT SDM3000 family\n*******************************************************************\n')
+
+
+    remote_ip = input("Enter the remote IP of your device: ")
+
     # Body: send the SCPI commands *IDN? 10 times and print the return message
     s = SocketConnect()
     getDeviceIDN(s);
 
-    println('\n*******************************\nSCPI python: automation measurement\n*******************************\n')
 
     print('\nMEASUREMENTS PARAMETERS:\n')
 
