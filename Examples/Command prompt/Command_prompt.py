@@ -34,28 +34,28 @@ def SocketConnect(remote_ip, port):
 
 def SocketQuery(Sock, command):
 
-	feedback = False	#weather or not a feedback is expected
-	reply = ""
+    feedback = False	#weather or not a feedback is expected
+    reply = ""
 
-	if("?" in command) == True:
-		feedback = True
+    if("?" in command) == True:
+        feedback = True
 
-	cmd = bytes(command, 'ascii')
+    cmd = bytes(command, 'ascii')
 
-	try:
-		#Send cmd string
-		Sock.sendall(cmd)
-		Sock.sendall(b'\n')
-		time.sleep(1)
-	except socket.error:
-		#Send failed
-		print ('Send failed')
-		sys.exit()
+    try:
+        #Send cmd string
+        Sock.sendall(cmd)
+        Sock.sendall(b'\n')
+        time.sleep(1)
+    except socket.error:
+        #Send failed
+        print ('Send failed')
+        sys.exit()
 
-	if feedback:
-		reply = cleanqStr(Sock.recv(4096))
+    if feedback:
+        reply = cleanqStr(Sock.recv(4096))
 
-	return reply
+    return reply
 
 
 def getDeviceIDN(s):
@@ -72,20 +72,20 @@ def cleanqStr(qStr):
 
 
 def main():
-	global ip
+    global ip
 
-	ip = input("Enter the IP address of the device: ");
+    ip = input("Enter the IP address of the device: ");
 
-	s = SocketConnect(ip, port)
-	getDeviceIDN(s)
+    s = SocketConnect(ip, port)
+    getDeviceIDN(s)
 
 
-	while True:
-		command = ""
+    while True:
+        command = ""
 
-		if command == "":
-			command = input("Enter command: ")
-			print(SocketQuery(s, command))
+        if command == "":
+            command = input("Enter command: ")
+            print(SocketQuery(s, command))
 
 
 if __name__ == '__main__':
